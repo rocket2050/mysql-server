@@ -1,0 +1,24 @@
+---
+
+- name: Download foo.conf
+  get_url: url=http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm dest=/root/
+
+- name: Installing repo
+  command: rpm -Uvh mysql-community-release-el6-5.noarch.rpm chdir=/root/
+
+- name: Installing mysql server
+  yum: name={{item}} state=latest update_cache=yes
+  with_items:
+      - mysql
+      - mysql-server
+      - MySQL-python
+      - libselinux-python
+
+- name: Enabling mysql
+  command: chkconfig mysqld on
+
+- name: Starting mysql
+  service: name=mysqld state=restarted
+
+- name: Mysql secure installation
+  include: mysql_secure_installation.yml
