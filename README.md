@@ -1,6 +1,6 @@
-# Ansible Role: Java
+# Ansible Role: mysql
 
-Installs mysql-server for RedHat/CentOS(6) and Ubuntu linux server.
+Installs mysql-server and client for RedHat/CentOS(6) and Ubuntu linux server.
 
 ## Requirements
 
@@ -21,13 +21,13 @@ Set the mysql_root_passowrd accordingly.
 
 None.
 
-## Example Playbook (using default package, usually OpenJDK 7)
+## Example Playbook (installs default mysql-server available)
 
     - hosts: mysql-server
       roles:
         - mysql-server
 
-## Example Playbook (install OpenJDK 7)
+## Example Playbook (install mysql-server client)
 
 For RHEL / CentOS:
 
