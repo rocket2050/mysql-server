@@ -1,10 +1,11 @@
 ---
 
-- name: Download foo.conf
+- name: Downloading rpm for mysql
   get_url: url=http://repo.mysql.com/mysql-community-release-el6-5.noarch.rpm dest=/root/
 
 - name: Installing repo
-  command: rpm -Uvh mysql-community-release-el6-5.noarch.rpm chdir=/root/
+  command: rpm -Uvh mysql-community-release-el6-5.noarch.rpm chdir=/root/ warn=no
+  ignore_errors: yes
 
 - name: Installing mysql server
   yum: name={{item}} state=latest update_cache=yes
