@@ -1,3 +1,6 @@
 ---
 # defaults file for mysql-server
 mysql_root_password: "root"
+create_directory: "/disk2"
+destination: "/disk2/mysql"
+mysql_directory_path: "/disk2/mysql"

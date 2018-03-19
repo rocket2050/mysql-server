@@ -1,4 +1,4 @@
 ---
-- hosts: "{{host}}"
+- hosts: mysql-server
   roles:
     - { role: "mysql-server" }

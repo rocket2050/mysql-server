@@ -1,0 +1,46 @@
+---
+
+- name: Stop the mysql service
+  service: 
+    name: mysql
+    state: stopped
+
+- name: create a directory
+  file:
+    path: "{{ create_directory }}"
+    state: directory
+    mode: 0755	 
+
+- name: Copy file from source to destination
+  command: cp -r /var/lib/mysql/ {{ destination }}
+  timeout: 3600
+
+- name: Change the user and group of mysql directory
+  file:
+    dest: "{{ mysql_directory_path }}"
+    owner: mysql
+    group: mysql
+    recurse: yes
+
+- name: Change the data directory of my.cnf file
+  template: 
+    src: my.cnf.j2   
+    dest: /etc/mysql/my.cnf
+
+- name: Change the line in alias file
+  template:
+    src: alias.j2
+    dest: /etc/apparmor.d/tunables/alias
+
+- name: reload the apparmer
+  service:
+    name: apparmor
+    state: reloaded
+
+- name: remove the file
+  file: path='/var/lib/mysql' state=absent
+
+- name: start the mysql service
+  service:
+    name: mysql
+    state: started 
