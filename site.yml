@@ -2,5 +2,5 @@
 - hosts: java
   become: true
   roles:
-    - "/etc/ansible/roles/mysql-server" 
+    - /etc/ansible/roles/mysql-server
   remote_user: root
