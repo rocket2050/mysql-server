@@ -3,4 +3,3 @@
   become: true
   roles:
     - /etc/ansible/roles/mysql-server
-  remote_user: root
