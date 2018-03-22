@@ -1,4 +1,6 @@
 ---
-- hosts: "{{host}}"
+- hosts: java
+  become: true
   roles:
-    - { role: "mysql-server" }
+    - "/etc/ansible/roles/mysql-server" 
+  remote_user: root
