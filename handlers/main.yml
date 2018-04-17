@@ -1,0 +1,7 @@
+---
+# handlers file for zabbix-agent
+- name: mysql restart
+  service: name=mysql state=restarted
+
+- name: mysqld restart
+  service: name=mysqld state=restarted

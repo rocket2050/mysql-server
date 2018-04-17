@@ -23,3 +23,7 @@
 
 - name: Mysql secure installation
   include: mysql_secure_installation.yml
+
+- name: Allow mysql fro remote host
+  template: src=my.conf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
+  notify: mysqld restart

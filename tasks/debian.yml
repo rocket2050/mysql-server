@@ -5,8 +5,11 @@
   with_items:
       - mysql-server
       - python-mysqldb
-
-- service: name=mysql state=started
+  notify: mysql restart
 
 - name: Mysql Secure Installation
   include: mysql_secure_installation.yml 
+
+- name: Allow mysql fro remote host
+  template: src=my.conf.j2 dest=/etc/mysql/my.cnf owner=root group=root mode=0644
+  notify: mysql restart
