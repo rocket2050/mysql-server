@@ -1,5 +1,5 @@
 ---
-- hosts: java
+- hosts: {{ host }}
   become: true
   roles:
     - /etc/ansible/roles/mysql-server
