@@ -7,3 +7,6 @@
 - name: Fetch OS
   include: redhat.yml
   when: ansible_os_family == "RedHat"
+
+- name: db configuration
+  include: dbconfiguration.yml
