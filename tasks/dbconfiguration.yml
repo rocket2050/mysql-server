@@ -10,9 +10,9 @@
 
 - name: Create new user...
   mysql_user:
-    name: {{ mysql_user_name }}
-    password: {{ mysql_user_password }}
-    priv: '*.*:ALL'
-    state: present
+    name={{ mysql_user_name }}
+    password={{ mysql_user_password }}
+    priv='*.*:ALL'
+    state=present
 
 
