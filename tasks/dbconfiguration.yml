@@ -2,7 +2,7 @@
 
 - name: Create DB (if necessary)
   mysql_db:
-    name={{ db_name }}
+    name={{ mysql_database_name }}
     state=present
     login_user=root
     login_password={{ mysql_root_password }}
