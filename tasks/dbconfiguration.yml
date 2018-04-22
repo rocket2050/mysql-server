@@ -8,11 +8,23 @@
     login_password={{ mysql_root_password }}
   register: db_created
 
-- name: Create new user...
-  mysql_user:
-    name={{ mysql_user_name }}
-    password={{ mysql_user_password }}
-    priv='*.*:ALL'
-    state=present
+#- name: Create new user...
+#  mysql_user:
+#    name={{ mysql_user_name }}
+#    password={{ mysql_user_password }}
+#    priv='*.*:ALL'
+#    state=present
+
+- name: Mysql Configuration
+  command: 'mysql -u root -p{{ mysql_root_password }} -e "{{ item }}"'
+  with_items:
+    - CREATE USER '{{ mysql_user_name }}'@'%' IDENTIFIED BY '{{ mysql_user_password }}';
+  ignore_errors: yes
+
+- name: Mysql Configuration
+  command: 'mysql -u root -p{{ mysql_root_password }} -e "{{ item }}"'
+  with_items:
+    - GRANT ALL PRIVILEGES ON * . * TO '{{ mysql_database_name }}'@'%';
+    - FLUSH PRIVILEGES;
 
 
