@@ -7,8 +7,8 @@
       - python-mysqldb
   notify: mysql restart
 
-- name: Starting mysql
-  service: name=mysql state=started
+- name: Starting Mysql service
+  command: service mysql start warn=no
 
 - name: Mysql Secure Installation
   include: mysql_secure_installation.yml 
