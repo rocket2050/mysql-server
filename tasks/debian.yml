@@ -7,6 +7,9 @@
       - python-mysqldb
   notify: mysql restart
 
+- name: Starting mysql
+  service: name=mysql state=started
+
 - name: Mysql Secure Installation
   include: mysql_secure_installation.yml 
 
