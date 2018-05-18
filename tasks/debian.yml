@@ -9,6 +9,7 @@
 
 - name: Starting Mysql service
   command: service mysql start warn=no
+  ignore_errors: yes
 
 - name: Mysql Secure Installation
   include: mysql_secure_installation.yml 
